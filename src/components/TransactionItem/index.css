@@ -1,0 +1,62 @@
+.card-item-lst {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.div {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.transaction-name {
+  color: #505887;
+  font-family: "Bree Serif";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 10px;
+}
+
+.category {
+  color: #718ebf;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 20%;
+}
+
+.date {
+  color: #718ebf;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 20%;
+}
+
+.credit {
+  color: #16dbaa;
+  font-family: "Bree Serif";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 20%;
+}
+
+.debit {
+  color: #fe5c73;
+  font-family: "Bree Serif";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 20%;
+}

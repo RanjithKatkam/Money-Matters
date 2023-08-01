@@ -1,0 +1,19 @@
+.seven-days-container {
+  width: 92%;
+  border-radius: 20px;
+  margin-left: 40px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.heading1 {
+  color: #718ebf;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px 20px 20px 20px;
+}

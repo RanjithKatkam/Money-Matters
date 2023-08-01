@@ -1,0 +1,27 @@
+.dashboard-main-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.dashboard-sub-container {
+  width: 82%;
+  height: auto;
+  background-color: #dde3ec;
+  overflow: auto;
+}
+
+.dashboard-body-container {
+  height: auto;
+}
+
+.last-transaction {
+  color: #333b69;
+  font-family: "Roboto";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left: 40px;
+  margin-top: 45px;
+}

@@ -1,0 +1,45 @@
+.credit-debit-container {
+  display: flex;
+  height: 30%;
+  align-items: center;
+  padding: 2px 0px;
+  margin-top: 20px;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.credit-debt-item {
+  display: flex;
+  background-color: #fff;
+  border-radius: 25px;
+  width: 39%;
+  padding: 10px 30px;
+  justify-content: space-between;
+}
+
+.credit-amount {
+  color: #16dbaa;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.debit-amount {
+  color: #fe5c73;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.credit-debit-heading {
+  color: #718ebf;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

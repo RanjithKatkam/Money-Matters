@@ -1,0 +1,9 @@
+.last-three-transactions {
+  list-style: none;
+  background-color: #fff;
+  width: 92%;
+  border-radius: 20px;
+  margin-left: 40px;
+  margin-top: 20px;
+  padding: 10px;
+}
