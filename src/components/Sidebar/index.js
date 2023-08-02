@@ -9,9 +9,68 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 
+const imageUrls = [
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_bkkf4b.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_10_ijnnlg.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_8_uyvsoz.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_9_edp81o.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_11_cp36tk.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_6_e1vw1n.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_7_owgtfk.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_5_zg0eiy.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_3_dyr82z.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_1_cjay60.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_2_lx2q9r.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_4_ibpfpe.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690800147/Avatar_mmgh4c.png",
+  },
+];
+
 function SideBar({ email, name }) {
   const navigate = useNavigate();
   const [isPopup, setPopup] = useState(false);
+  const transactionType =
+    email === "admin@gmail.com" ? "All Transactions" : "Transactions";
+  const profileImg =
+    email === "admin@gmail.com" ? imageUrls[0].url : imageUrls[1].url;
 
   const onClickLogout = () => {
     localStorage.removeItem("email");
@@ -98,7 +157,7 @@ function SideBar({ email, name }) {
                         : "item-name"
                     }
                   >
-                    Transactions
+                    {transactionType}
                   </p>
                 </li>
               </Link>
@@ -125,11 +184,7 @@ function SideBar({ email, name }) {
             </ul>
             <hr />
             <div className="profile-container">
-              <img
-                src="https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690800147/Avatar_mmgh4c.png"
-                alt="profile"
-                className="profile-img"
-              />
+              <img src={profileImg} alt="profile" className="profile-img" />
               <div className="details-container">
                 <div className="name-logout-container">
                   <h1 className="user-name">{name}</h1>{" "}

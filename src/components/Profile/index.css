@@ -7,12 +7,19 @@
   margin-top: 40px;
   padding: 10px 20px;
   display: flex;
+  align-items: flex-start;
 }
 
 .profile-logo-container {
   width: 20%;
+  height: 20%;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+
+.profile-page-image {
+  width: 100px;
 }
 
 .profile-details-container {

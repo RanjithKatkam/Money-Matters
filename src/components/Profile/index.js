@@ -1,19 +1,80 @@
 import Sidebar from "../Sidebar";
 import Header from "../Header";
-import { BiUserCircle } from "react-icons/bi";
 import "./index.css";
+
+const imageUrls = [
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_bkkf4b.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_10_ijnnlg.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_8_uyvsoz.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_9_edp81o.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_11_cp36tk.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_6_e1vw1n.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907711/Ellipse_103_7_owgtfk.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_5_zg0eiy.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_3_dyr82z.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_1_cjay60.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_2_lx2q9r.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690907693/Ellipse_103_4_ibpfpe.png",
+  },
+  {
+    url:
+      "https://res.cloudinary.com/dwgg5pyqk/image/upload/v1690800147/Avatar_mmgh4c.png",
+  },
+];
 
 const Profile = () => {
   const email = localStorage.getItem("email");
   const name = localStorage.getItem("name");
+  const password = localStorage.getItem("password");
+  const profileImg =
+    email === "admin@gmail.com" ? imageUrls[0].url : imageUrls[1].url;
   return (
     <div className="dashboard-main-container">
       <Sidebar email={email} name={name} />
       <div className="dashboard-sub-container">
-        <Header type={"Profile"} />
+        <Header details={{ email, password }} type={"Profile"} />
         <div className="profile-main-container">
           <div className="profile-logo-container">
-            <BiUserCircle size={150} />
+            <img
+              className="profile-page-image"
+              src={profileImg}
+              alt="profile"
+            />
           </div>
           <div className="profile-details-container">
             <div className="item1">

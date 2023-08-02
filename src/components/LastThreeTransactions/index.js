@@ -1,5 +1,6 @@
 import { Component } from "react";
 import TransactionItem from "../TransactionItem";
+import AdminTransactions from "../AdminTransactions";
 import "./index.css";
 
 class LastThreeTransactions extends Component {
@@ -53,11 +54,21 @@ class LastThreeTransactions extends Component {
 
   render() {
     const { lastThreeTransactions } = this.state;
+    const { details } = this.props;
+    const { email } = details;
     return (
       <ul className="last-three-transactions">
-        {lastThreeTransactions.map((eachItem) => (
-          <TransactionItem details={eachItem} key={eachItem.id} />
-        ))}
+        {lastThreeTransactions.map((eachItem) =>
+          email === "admin@gmail.com" ? (
+            <AdminTransactions details={eachItem} key={eachItem.id} />
+          ) : (
+            <TransactionItem
+              renderTransactions={this.renderTransactions}
+              details={eachItem}
+              key={eachItem.id}
+            />
+          )
+        )}
       </ul>
     );
   }

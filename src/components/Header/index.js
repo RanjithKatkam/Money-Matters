@@ -32,15 +32,13 @@ class Header extends Component {
     };
     const response = await fetch(url, options);
     const responseData = await response.json();
-    if (
-      responseData.get_user_id !== undefined &&
-      responseData.get_user_id[0].id !== undefined
-    ) {
+    if (responseData.get_user_id[0].id !== undefined) {
       this.setState({ userId: responseData.get_user_id[0].id });
     }
   };
 
-  onClickAddTransaction = async () => {
+  onClickAddTransaction = async (event) => {
+    event.preventDefault();
     const {
       transactionName,
       transactionType,
@@ -50,60 +48,36 @@ class Header extends Component {
       userId,
     } = this.state;
     if (transactionName !== "" && amount !== "" && date !== "") {
-      const { details } = this.props;
-      const { email } = details;
-      let transactionDetails;
-      if (email === "admin@gmail.com") {
-        transactionDetails = {
-          name: transactionName,
-          type: transactionType,
-          category: category,
-          amount: amount,
-          date: date,
-        };
-      } else {
-        transactionDetails = {
-          name: transactionName,
-          type: transactionType,
-          category: category,
-          amount: amount,
-          date: date,
-          user_id: userId,
-        };
-      }
+      const transactionDetails = {
+        name: transactionName,
+        type: transactionType,
+        category: category,
+        amount: amount,
+        date: date,
+        user_id: userId,
+      };
 
       const url =
         "https://bursting-gelding-24.hasura.app/api/rest/add-transaction";
-      let options;
 
-      if (email === "admin@gmail.com") {
-        options = {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            "x-hasura-admin-secret":
-              "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-            "x-hasura-role": "admin",
-          },
-        };
-      } else {
-        options = {
-          method: "POST",
-          hostname: "bursting-gelding-24.hasura.app",
-          path: "/api/rest/add-transaction",
-          headers: {
-            "content-type": "application/json",
-            "x-hasura-admin-secret":
-              "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-            "x-hasura-role": "user",
-            "x-hasura-user-id": userId,
-          },
-          body: JSON.stringify(transactionDetails),
-        };
-      }
+      const options = {
+        method: "POST",
+        hostname: "bursting-gelding-24.hasura.app",
+        path: "/api/rest/add-transaction",
+        headers: {
+          "content-type": "application/json",
+          "x-hasura-admin-secret":
+            "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
+          "x-hasura-role": "user",
+          "x-hasura-user-id": userId,
+        },
+        body: JSON.stringify(transactionDetails),
+      };
+
       const response = await fetch(url, options);
       const responseData = await response.json();
       console.log(responseData);
+      this.setState((prev) => ({ addTransaction: !prev.addTransaction }));
     }
   };
 
@@ -133,23 +107,27 @@ class Header extends Component {
 
   render() {
     const { addTransaction } = this.state;
-    const { type } = this.props;
-    // console.log(transactionName, transactionType, amount, date, category);
+    const { type, email } = this.props;
     return (
       <>
         <div className="header-main-container">
           <h1 className="type-heading">{type}</h1>
-          <button
-            onClick={this.toggleTransaction}
-            type="button"
-            className="add-transaction-button"
-          >
-            <AiOutlinePlus /> Add Transaction
-          </button>
+          {email !== "admin@gmail.com" ? (
+            <button
+              onClick={this.toggleTransaction}
+              type="button"
+              className="add-transaction-button"
+            >
+              <AiOutlinePlus /> Add Transaction
+            </button>
+          ) : null}
         </div>
         {addTransaction && (
           <div className="popup-overlay">
-            <form className="transaction-popup-container">
+            <form
+              onSubmit={this.onClickAddTransaction}
+              className="transaction-popup-container"
+            >
               <div className="heading-container">
                 <h1 className="f1">Add Transaction</h1>
                 <button
@@ -219,11 +197,7 @@ class Header extends Component {
                 placeholder="Select Date"
                 onChange={this.onChangeDate}
               />
-              <button
-                onClick={this.onClickAddTransaction}
-                className="f6"
-                type="submit"
-              >
+              <button className="f6" type="submit">
                 Add Transaction
               </button>
             </form>
